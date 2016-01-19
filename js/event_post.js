@@ -1,16 +1,86 @@
 /**
- * Creates a new EventList model.
- * Takes an event API gateway as a parameter to retrieve current event data.
+ * Creates a new EventPost model.
+ * Takes an event API gateway as a parameter to post event data.
  */
-function newEventListModel(eventApi) {
+function newEventPostModel(eventApi) {
   /**
-   * @var an array of the current events.
+   * @var an array of event info: 
+   * (Name of Event, Event description, date, time, name of organization, location).
    */
-  var events = [];
+  var eventInfo = "";
+
 
   /**
-   * @const obs is an Observable. The Model uses it to allow other objects to
-   * attach to it, and to notify attached observers when the Model's data has
+   * Posts event to the provided API
+   */
+  function update() {
+    var events = eventApi.postEvents(eventInfo);
+  }
+
+  /**
+   * Posts the event
+   */
+  function postEvents(eventInfo) {
+    var infoAsString = eventInfo.join();
+    eventInfo = infoAsString;
+    
+  }
+
+  /**
+   * returns eventInfo which is a string of the event info
+   */
+  function getEventInfoString(eventInfo) {
+    return eventInfo;
+    
+  }
+
+  return {
+      postEvents: postEvents,
+      update: update,
+    };
+}
+
+
+/**
+ * Connects the EventPostModel to the EventPostView.
+ */
+function newEventPostController(model, view) {
+
+  /**
+   * @const The updater sends info to the model from the view.
+   */
+  var updater = {};
+  updater.update = function() {
+    model.postEvents(view.eventInfo);
+    // Sends the data to the server
+    model.update();  
+  };
+  view.attach(updater);
+
+ 
+  return {};
+}
+
+/**
+ * Gathers data from view and handles it to give to the model via the controller
+ */
+function gatherTextBoxData() {
+
+  //todo: textbox and button view goes here?
+
+  //gather (Name of Event, Event description, date, time, name of organization, location).
+  var nameOfEvent = document.getElementsByName("nameOfEventText").value;
+  var descriptionOfEvent = document.getElementsByName("descriptionOfEventText").value;
+  var dateOfEvent = document.getElementsByName("dateOfEventText").value;
+  var timeOfEvent = document.getElementsByName("timeOfEventText").value;
+  var nameOfOrg = document.getElementsByName("nameOfOrgText").value;
+  var locationOfEvent = document.getElementsByName("locationOfEventText").value;
+
+  var eventInfoArray = [nameOfEvent, descriptionOfEvent, dateOfEvent, timeOfEvent, nameOfEvent, locationOfEvent];
+
+  /**
+   * @const obs is an Observable. The View uses it to allow other objects to
+   * attach to it, and to notify attached observers when the Views's data has
    * changed.
    */
   var obs = newObservable();
@@ -19,81 +89,24 @@ function newEventListModel(eventApi) {
    * Gets current events from the provided event API, and notifies observers
    * of the change.
    */
-  function update() {
-    var events = eventApi.getEvents();
-    updateEvents(events);
-  }
 
-  /**
-   * Returns the current events
-   */
-  function getEvents() {
-    return events;
-  }
-
-  function updateEvents(newEvents) {
-    events = newEvents;
+  function updateEvents() {
     obs.notify();
+  }
+
+
+  function eventInfo(){
+    return eventInfoArray;
+  }
+
+  //if post button is pressed notify the observer (i.e., the controller)
+  if(buttonpressed){
+    updateEvents();
   }
 
   return {
       attach: obs.attach,
-      getEvents: getEvents,
-      update: update,
-    };
-}
-
-/**
- * Connects the EventListModel to the EventListView.
- */
-function newEventListController(model, view) {
-  /**
-   * @const The updater listens to changes to model then updates the view.
-   */
-  var updater = {};
-  updater.update = function() {
-    view.render(model.getEvents());
-  };
-  model.attach(updater);
-
-  // Initializes model which in turn initializes the view.
-  model.update();
-
-  return {};
-}
-
-/**
- * Creates a new view for an EventList.
- */
-function newEventListView() {
-  // TODO(simba) catch events such as onclick.
-  // TODO(simba) make view more generic
-  /**
-   * @const The root HTML element of this view.
-   */
-  var root = document.createElement("ul");
-
-  /**
-   * @const templator is a function which takes data in the form:
-   * [ {name: <string>, value: <string>} ... ] and creates an HTML string out
-   * of them.
-   */
-  var templator = doT.template(
-      "{{~it :value:idx}}" +
-      "<li>{{=value.name}}</li>" +
-      "<li>{{=value.summary}}</li>" +
-      "{{~}}"
-    );
-
-  /**
-   * Updates the view to properly display the data provided.
-   */
-  function render(data) {
-    root.innerHTML = templator(data);
-  }
-
-  return {
-      root: root,
-      render: render,
+      eventInfo: eventInfo,
+      updateEvents: updateEvents,
     };
 }
