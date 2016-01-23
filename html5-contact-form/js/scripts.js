@@ -34,6 +34,11 @@ www.toddmotto.com
 	if(send) {
 		send.onclick = function () {
 			this.innerHTML = '...Sending';
+			var name = document.getElementById('name').value;
+			var summary = document.getElementById('summary').value;
+			var arrayOf = [name,summary]
+			var newString = "{"+"name" + ":"+ arrayOf[0] +","+"summary"+":"+arrayOf[1]+"}"
+			alert(newString);
 		}
 	}
 

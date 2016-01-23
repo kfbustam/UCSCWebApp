@@ -21,7 +21,7 @@ function newEventPostModel(eventApi) {
    * Posts the event
    */
   function postEvents(eventInfo) {
-    var infoAsString = eventInfo.join();
+    var infoAsString = "{"+"name" + ":"+ eventInfo[0] +","+"summary"+":"+eventInfo[1]+"}"
     eventInfo = infoAsString;
     
   }
@@ -69,14 +69,16 @@ function gatherTextBoxData() {
   //todo: textbox and button view goes here?
 
   //gather (Name of Event, Event description, date, time, name of organization, location).
-  var nameOfEvent = document.getElementsByName("nameOfEventText").value;
-  var descriptionOfEvent = document.getElementsByName("descriptionOfEventText").value;
+  var name = document.getElementById('name').value;
+  var summary = document.getElementById('summary').value;
+  /*
   var dateOfEvent = document.getElementsByName("dateOfEventText").value;
   var timeOfEvent = document.getElementsByName("timeOfEventText").value;
   var nameOfOrg = document.getElementsByName("nameOfOrgText").value;
   var locationOfEvent = document.getElementsByName("locationOfEventText").value;
+  */
 
-  var eventInfoArray = [nameOfEvent, descriptionOfEvent, dateOfEvent, timeOfEvent, nameOfEvent, locationOfEvent];
+  var eventInfoArray = [name, summary];
 
   /**
    * @const obs is an Observable. The View uses it to allow other objects to
