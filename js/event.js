@@ -77,13 +77,13 @@ function newEventView(nameElem, descElem, saveElem) {
     handlers[callback] = fn;
   }
 
-  nameElem.onkeydown = function() {
+  nameElem.onkeyup = function() {
     if(handlers.nameChange) {
       handlers.nameChange(nameElem.value);
     }
   };
 
-  descElem.onkeydown = function() {
+  descElem.onkeyup = function() {
     if(handlers.descChange) {
       handlers.descChange(descElem.value);
     }
