@@ -70,61 +70,6 @@ describe('Event List', function() {
     expect(test_div.innerHTML).to.equal("<ul></ul>");
   });
   
-  /*
-  it('correctly updates view on model changes', function() {
-    testCases = [
-        {
-          events: [
-            {name: "a", summary: "b"},
-            {name: "c", summary: "d"},
-          ],
-          expected: "<ul>" +
-            "<li>a</li>" +
-            "<li>b</li>" +
-            "<li>c</li>" +
-            "<li>d</li>" +
-            "</ul>",
-        },
-        {
-          events: [
-            {name: "a", summary: "b"},
-          ],
-          expected: "<ul>" +
-            "<li>a</li>" +
-            "<li>b</li>" +
-            "</ul>",
-        },
-        {
-          events: [
-            {name: "e", summary: "f"},
-          ],
-          expected: "<ul>" +
-            "<li>e</li>" +
-            "<li>f</li>" +
-            "</ul>",
-        },
-        {
-          events: [],
-          expected: "<ul></ul>",
-        }
-      ];
-    var mockApi = newMockEventsApi();
-    var model = newEventPostModel(mockApi);
-    var view = gatherTextBoxData();
-    var controller = newEventPostController(model, view);
-    test_div.appendChild(view.root);
-
-    _.each(testCases, function(testCase) {
-        mockApi.setEvents(testCase.events);
-        model.update();
-        expect(test_div.innerHTML).to.equal(testCase.expected);
-      });
-  });
-	
-  afterEach(function() {
-    test_div.innerHTML = "";
-  });
-  */
 });
 
 describe('Observable', function() {
