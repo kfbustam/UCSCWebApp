@@ -1,9 +1,16 @@
 function main() {
-  var model = newEventModel(newEventApi());
-  var view = newEventView(
+  var eventModel = newEventModel(newEventApi());
+  var eventView = newEventView(
       document.getElementById("name"),
       document.getElementById("description"),
       document.getElementById("save")
     );
-  newEventController(model, view);
+  newEventController(eventModel, eventView);
+
+  var diningModel = newDiningModel(newDiningApi());
+  var diningView = newDiningView(
+
+
+    );
+  newDiningController(diningModel, diningView());
 }

@@ -1,10 +1,7 @@
-function newEventApi() {
+function newDiningApi() {
   function getEvent(e) {
-    
-  }
-  function postEvent(e) {
       $.ajax({
-      type: 'POST',
+      type: 'GET',
       data: e,
       dataType: "json",
       url: "http://localhost:8080/event",
