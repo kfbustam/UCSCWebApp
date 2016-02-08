@@ -1,6 +1,6 @@
 /**
  * Creates a new DiningPost model.
- * Takes an event API gateway as a parameter to post event data.
+ * Takes an dining API gateway as a parameter to post event data.
  */
 function newDiningModel(diningApi) {
 
@@ -15,19 +15,20 @@ function newDiningModel(diningApi) {
   var food = [];
 
   function getCollegeName() {
-    return collegeName;
+    return this.collegeName;
   }
 
   function setCollegeName(newCollegeName) {
-    newCollegeName = newCollegeName;
+    this.collegeName = newCollegeName;
   }
 
   function getFood() {
-    return food;
+    return this.food;
   }
 
-  function addFood(newFood) {
-    food.push(newFood);
+  function addFood(newFoodName, newFoodAttr) {
+    var newFood = new Food(newFoodName, newFoodAttr);
+    this.food.push(newFood);
   }
 
   return {
@@ -38,8 +39,17 @@ function newDiningModel(diningApi) {
     };
 }
 
-function Food() {
-  var attr = [];
+function Food(name, attr) {
+  this.name = name;
+  this.attr = attr;
+
+  function getName() {
+    return this.name;
+  }
+
+  function getAttr() {
+    return this.attr;
+  }
 }
 
 /**
