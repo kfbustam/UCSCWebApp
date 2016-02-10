@@ -2,44 +2,43 @@
  * Creates a new DiningPost model.
  * Takes an event API gateway as a parameter to post event data.
  */
-function newDiningModel(diningApi) {
+function newDiningListModel(diningListApi) {
 
   /**
-   * @var name of the event.
+   * @var list of dining halls
    */
-  var collegeName = "";
+  var diningList = [];
 
-  /**
-   * @var description of the event.
-   */
-  var food = [];
-
-  function getCollegeName() {
-    return collegeName;
+  function getDiningList() {
+    return diningList;
   }
 
-  function setCollegeName(newCollegeName) {
-    newCollegeName = newCollegeName;
+  function pushDiningHall(newDiningHall) {
+    diningList.push(newDiningHall);
   }
 
-  function getFood() {
-    return food;
+  function popDiningHall() {
+    diningList.pop();
   }
 
-  function addFood(newFood) {
-    food.push(newFood);
+  function clearDiningList() {
+    diningList = [];
   }
 
   return {
-      getFood: getFood,
-      addFood: addFood,
-      setCollegeName: setCollegeName,
-      getCollegeName: getCollegeName,
+      getDiningList: getDiningList,
+      pushDiningHall: pushDiningHall,
+      popDiningHall: popDiningHall,
+      clearDiningList: clearDiningList,
     };
 }
 
-function Food() {
-  var attr = [];
+function DiningHall(name) {
+  this.name = name;
+
+  function getName() {
+    return this.name;
+  }
 }
 
 /**
