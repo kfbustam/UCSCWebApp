@@ -1,5 +1,5 @@
 function newDiningApi() {
-  function getEvent(e) {
+  function getDiningHall(e) {
       $.ajax({
       type: 'GET',
       data: e,
@@ -15,6 +15,6 @@ function newDiningApi() {
   }
 
   return {
-    postEvent: postEvent,
+    getEvent: getEvent,
   };
 }

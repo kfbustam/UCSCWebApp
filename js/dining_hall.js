@@ -1,18 +1,32 @@
 /**
  * Creates a new DiningPost model.
- * Takes an dining API gateway as a parameter to post event data.
+ * Takes a dining API gateway as a parameter to post event data.
  */
 function newDiningHallModel(diningHallApi) {
 
   /**
+   * Parsing json
+   */
+  var json = diningHallApi.getDiningHall();
+  var diningHall = JSON.parse(json);
+
+  /**
    * @var name of the event.
    */
-  var collegeName = "";
+  var collegeName = diningHall.name;
 
   /**
    * @var description of the event.
    */
-  var food = [];
+  var foodarray = diningHall.items;
+
+  var breakfastjson = JSON.parse(foodarray.breakfast);
+  var lunchjson = JSON.parse(foodarray.lunch);
+  var dinnerjson = JSON.parse(foodarray.dinner);
+
+  var breakfast = Food(breakfastjson.name, JSON.parse(breakfastjson.attribs));
+  var lunch = Food(lunchjson.name, JSON.parse(lunchjson.attribs));
+  var dinner = Food(dinnerjson.name, JSON.parse(dinnerjson.attribs));
 
   function getCollegeName() {
     return this.collegeName;
@@ -42,8 +56,10 @@ function newDiningHallModel(diningHallApi) {
   return {
       getFood: getFood,
       addFood: addFood,
+      clearFood: clearFood,
       setCollegeName: setCollegeName,
       getCollegeName: getCollegeName,
+      clearCollegeName: clearCollegeName
     };
 }
 
@@ -58,24 +74,21 @@ function Food(name, attr) {
   function getAttr() {
     return this.attr;
   }
+
+  return {
+      getName: getName,
+      getAttr: getAttr
+  };
 }
 
 /**
  * Connects the EventModel to the EventView.
  */
 function newDiningController(model, view) {
-  view.bind('descChange', function() {
-      return model.getCollegeName();
-    });
-
-  view.bind('nameChange', function() {
-      model.setName(newName);
-    }); 
-
   return {};
 }
 
-function newDiningView(nameElem, descElem, saveElem) {
+function newDiningView(nameElem, mealElem, foodElem, attrElem) {
   // Map between callbacks and their handlers
   var handlers = {};
 
