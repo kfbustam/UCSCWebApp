@@ -2,7 +2,7 @@
  * Creates a new DiningPost model.
  * Takes an dining API gateway as a parameter to post event data.
  */
-function newDiningModel(diningApi) {
+function newDiningHallModel(diningHallApi) {
 
   /**
    * @var name of the event.
@@ -31,6 +31,14 @@ function newDiningModel(diningApi) {
     this.food.push(newFood);
   }
 
+  function clearCollegeName() {
+    this.collegeName = "";
+  }
+
+  function clearFood() {
+    this.food = [];
+  }
+
   return {
       getFood: getFood,
       addFood: addFood,
@@ -56,11 +64,11 @@ function Food(name, attr) {
  * Connects the EventModel to the EventView.
  */
 function newDiningController(model, view) {
-  view.bind('descChange', function(newDesc) {
-      model.setDescription(newDesc);
+  view.bind('descChange', function() {
+      return model.getCollegeName();
     });
 
-  view.bind('nameChange', function(newName) {
+  view.bind('nameChange', function() {
       model.setName(newName);
     }); 
 
