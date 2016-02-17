@@ -1,3 +1,7 @@
+// onclick
+// getactive(str)
+// setactive(str)
+
 /**
  * Creates a new DiningPost model.
  * Takes an event API gateway as a parameter to post event data.
@@ -25,6 +29,12 @@ function newDiningListModel(diningListApi) {
     diningList = [];
   }
 
+  function upload(){
+   diningApi.postDining({
+      name: name
+   });
+  }
+
   return {
       getDiningList: getDiningList,
       pushDiningHall: pushDiningHall,
@@ -45,13 +55,9 @@ function DiningHall(name) {
  * Connects the EventModel to the EventView.
  */
 function newDiningController(model, view) {
-  view.bind('descChange', function(newDesc) {
-      model.setDescription(newDesc);
+  view.bind('show', function() {
+      model.getDiningList();
     });
-
-  view.bind('nameChange', function(newName) {
-      model.setName(newName);
-    }); 
 
   return {};
 }
