@@ -32,40 +32,33 @@ function newDiningHallModel(diningHallApi) {
     return this.collegeName;
   }
 
-  function setCollegeName(newCollegeName) {
-    this.collegeName = newCollegeName;
-  }
+  function getMeal() {
+    var date = new Date();
+    var hours = date.getHours();
+    var min = date.getMinutes();
+    var sec = date.getSeconds();
+    var time = (hours * 100) + min;
 
-  function getFood() {
-    return this.food;
-  }
-
-  function addFood(newFoodName, newFoodAttr) {
-    var newFood = new Food(newFoodName, newFoodAttr);
-    this.food.push(newFood);
-  }
-
-  function clearCollegeName() {
-    this.collegeName = "";
-  }
-
-  function clearFood() {
-    this.food = [];
+    if (time >= 0 && time < 1200) {
+       return this.breakfast;
+    } else if (time >= 1200 && time < 1700) {
+       return this.lunch;
+    } else if (time >= 1700 && time < 2399) {
+       return this.dinner;
+    } else {
+       return this.breakfast;
+    }
   }
 
   return {
-      getFood: getFood,
-      addFood: addFood,
-      clearFood: clearFood,
-      setCollegeName: setCollegeName,
       getCollegeName: getCollegeName,
-      clearCollegeName: clearCollegeName
+      getMeal: getMeal,
     };
 }
 
-function Food(name, attr) {
-  this.name = name;
-  this.attr = attr;
+function Food(foodName, foodAttr) {
+  var name = foodName;
+  var attr = foodAttr;
 
   function getName() {
     return this.name;
@@ -82,13 +75,13 @@ function Food(name, attr) {
 }
 
 /**
- * Connects the EventModel to the EventView.
+ * Connects the DiningHallModel to the DiningHallView.
  */
-function newDiningController(model, view) {
+function newDiningHallController(model, view) {
   return {};
 }
 
-function newDiningView(nameElem, mealElem, foodElem, attrElem) {
+function newDiningHallView(nameElem, foodElem, Elem) {
   // Map between callbacks and their handlers
   var handlers = {};
 
