@@ -32,12 +32,24 @@ body {
      }
 
 }
+
 .wrapper {
 	max-width:500px;
 	width:95%;
 	margin:0 auto;
 	position:relative;
 }
+
+#contact-form ul {
+	list-style-type: none;
+}
+#event-name {
+	font-weight: bold;
+}
+#event-detail {
+	font-weight: normal;
+}
+
 #contact-form input[type="text"],
 #contact-form input[type="email"],
 #contact-form input[type="tel"],
