@@ -28,17 +28,21 @@ function newDiningHallModel(diningHallApi) {
   var lunch = Food(lunchjson.name, JSON.parse(lunchjson.attribs));
   var dinner = Food(dinnerjson.name, JSON.parse(dinnerjson.attribs));
 
-  function getCollegeName() {
-    return this.collegeName;
-  }
-
-  function getMeal() {
+  function getTime() {
     var date = new Date();
     var hours = date.getHours();
     var min = date.getMinutes();
     var sec = date.getSeconds();
     var time = (hours * 100) + min;
+    return time;
+  }
 
+  function getCollegeName() {
+    return this.collegeName;
+  }
+
+  function getMeal() {
+    var time = getTime();
     if (time >= 0 && time < 1200) {
        return this.breakfast;
     } else if (time >= 1200 && time < 1700) {

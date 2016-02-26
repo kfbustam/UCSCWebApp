@@ -12,5 +12,5 @@ function main() {
 
 
     );
-  newDiningController(diningModel, diningView());
+  newDiningController(diningModel, diningView);
 }
