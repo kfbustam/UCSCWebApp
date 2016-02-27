@@ -6,10 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="author" content="@toddmotto">
 	<link href="css/style.css" rel="stylesheet">
+    <link href="css/navbar-fixed-top.css" rel="stylesheet">
     <link rel="icon" href="../bootstrap-3.3.6/bootstrap-3.3.6/docs/favicon.ico">
 
-    <title>Event Submission Form</title>
+    <title>Event List</title>
 
+	<link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+    
     <!-- Latest compiled and minified CSS -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 
@@ -20,6 +23,9 @@
   </head>
 
   <body>
+    <script type="text/javascript">
+      window.onMap = false;
+    </script>
 
     <!-- Fixed navbar -->
     <nav class="navbar navbar-default navbar-fixed-top">
@@ -66,8 +72,53 @@
         </div><!--/.nav-collapse -->
       </div>
     </nav>
-   
-   
+    
+    <div class="wrapper">
+		<div id="main" style="padding:0 50% 0 5%;">
+		
+		<!-- Form -->
+		<form id="contact-form" action="/" method="post">
+			<h3>Events</h3>
+            <br>
+			
+			<ul>
+				<li id="event-name">
+					Name of Event
+					<ul>
+						<li id="event-detail">
+							This is an Event detail.
+						</li>
+					</ul>
+				</li>
+				<hr>
+				<li id="event-name">
+					Name of Event 2
+					<ul>
+						<li id="event-detail">
+							Here's a really long event detail, what happens when this happens? Will it look good? Who knows? The only way is to keep testing it.
+						</li>
+					</ul>
+				</li>
+				<hr>
+				<li id="event-name">
+					Name of Event 3 This even name is super long, does it look ugly? Probably looks super basic. Should we keep?
+					<ul>
+						<li id="event-detail">
+							This detail has to be different.<br> There are <br> random breaks.<br> How will this affect the visuals?
+						</li>
+					</ul>
+				</li>
+				<hr>
+			</ul>
+
+		<!-- /Form -->
+		
+		</div>
+	</div>
+
+
+
+
    
     <!-- Latest compiled and minified JavaScript -->
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>

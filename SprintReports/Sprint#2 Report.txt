@@ -1,0 +1,38 @@
+Sprint #2 Report
+SlugApp
+Team SlugApp
+02/18/16
+
+
+actions to stop:
+	- none.
+			We have made progress but a lot still needs to be done before we can release the webapp. 
+			Aside from aspects that we would like to improve on, we are good at communicating, which makes us work well as a team.
+
+actions to start:
+	- Update the scrum board more often. - The scrum board in not updated as often as it could be.
+	- Integrating the parts of each feature together (connecting the back end and the front end).
+	 
+
+actions to keep:
+	- Communicate through facebook messenger. It is the best way for everyone to communicate with eachother in the group chat.
+	- Communicate through Slack. It’s easier for more technical conversations and send files (e.g., JSON).
+	- Arrange more meetings. Working together helps.
+	- keeping each other more up to date and be able to demo what we have in person.
+
+
+
+work completed:
+	- As users, we want to be able to be able to see what’s on the menu for what meal in each college in real time.
+	- As developers, we want to serve relevant data to users.
+
+work not completed:
+	- As users, we want to be able to be able to view a list of events WITH FILTERS. Filters not yet done, but can view list.
+	- As developers, we want to be able to work on the UI/UX of our web app
+	- As developers, we want to be able to work on the bus feature of our web app.
+	
+work completion rate:
+	- Total # of user stories completed during this sprint: 3 out of 4
+	- Total # of ideal work hours completed during this sprint: 65 hours
+	- Total # of days during this sprint: 15 days
+	- Approximately .25 user stories done per day, 4.3 hours worked per day
