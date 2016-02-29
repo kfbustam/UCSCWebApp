@@ -16,16 +16,13 @@
 
 var delay = 2000; // 2 second delay
 var map;
-var loopMarker1;
-var loopMarker2;
-var loopMarker3;
-var loopMarker4;
-var loopMarker5;
-var loopMarker6;
-var loopMarker7;
-var loopMarker8;
+var listOfLoopBusMarkers = [];
+var loopBusCount = 0;
 
 
+
+  // http://stackoverflow.com/questions/30938021/continuously-updating-google-maps-with-user-location
+  // call the function initally
 function updatePosition() {
     $.ajax({
         url: "http://bts.ucsc.edu:8081/location/get",
@@ -33,110 +30,66 @@ function updatePosition() {
     })
     .done(function callDone(data) {
         // update marker position
-        /*for (i = 0; i < data.length; i++) { 
+        for (i = 0; i < data.length; i++) { 
           var latLng = new google.maps.LatLng( data[i].lat, data[i].lon );
-          //listOfLoopBusMarkers[i].setPosition( latLng );
-          marker.setPosition(latLng);
-        }*/
-        var latLng1 = new google.maps.LatLng( data[0].lat, data[0].lon );
-        loopMarker1.setPosition(latLng1)
-        var latLng2 = new google.maps.LatLng( data[1].lat, data[1].lon );
-        loopMarker2.setPosition(latLng2)
-        var latLng3 = new google.maps.LatLng( data[2].lat, data[2].lon );
-        loopMarker3.setPosition(latLng3)
-        var latLng4 = new google.maps.LatLng( data[3].lat, data[3].lon );
-        loopMarker4.setPosition(latLng4)
-        var latLng5 = new google.maps.LatLng( data[4].lat, data[4].lon );
-        loopMarker5.setPosition(latLng5)
-        var latLng6 = new google.maps.LatLng( data[5].lat, data[5].lon );
-        loopMarker6.setPosition(latLng6)
-        var latLng7 = new google.maps.LatLng( data[6].lat, data[6].lon );
-        loopMarker7.setPosition(latLng7)
-        var latLng8 = new google.maps.LatLng( data[7].lat, data[7].lon );
-        loopMarker8.setPosition(latLng8)
+          listOfLoopBusMarkers[i].setPosition( latLng );
+        }
+
         // call the function again
 
         setTimeout( updatePosition, delay );
     });
 }
 
+function countLoop() {
+    $.ajax({
+        url: "http://bts.ucsc.edu:8081/location/get",
+        dataType: 'json'
+    })
+    .done(function callDone(data) {
+        // update marker position
+        for (i = 0; i < data.length; i++) { 
+          loopBusCount = loopBusCount +1;
+        }
+        var str1 = "There are currently "
+        var str2 = loopBusCount
+        var str3 = " loop buses running."
+        alert(str1.concat(str2,str3));
+        var myLatLng = {lat: 37.0000, lng: -122.0600};
+        for (i = 0; i < loopBusCount; i++) {
+
+          var loopMarker = new google.maps.Marker({
+            map: map,
+            position: myLatLng,
+            title: 'Hello World!'
+          });
+          listOfLoopBusMarkers[i] = loopMarker;
+        }
+        // Create a map object and specify the DOM element for display.
+        map = new google.maps.Map(document.getElementById('map'), {
+          center: myLatLng,
+          scrollwheel: false,
+          zoom: 16
+        });
+
+        for (i = 0; i < loopBusCount; i++) {
+          listOfLoopBusMarkers[i].setMap(map);
+        }
+
+
+
+
+      setTimeout( updatePosition, delay );
+
+    });
+}
+
 
 function initMap() {
-
-    var myLatLng = {lat: 37.0000, lng: -122.0600};
-    //for (i = 0; i < loopBusCount; i++) {
-      loopMarker1 = new google.maps.Marker({
-        map: map,
-        position: myLatLng,
-        title: 'Hello World!'
-      });
-      loopMarker2 = new google.maps.Marker({
-        map: map,
-        position: myLatLng,
-        title: 'Hello World!'
-      });
-      loopMarker3 = new google.maps.Marker({
-        map: map,
-        position: myLatLng,
-        title: 'Hello World!'
-      });
-      loopMarker4 = new google.maps.Marker({
-        map: map,
-        position: myLatLng,
-        title: 'Hello World!'
-      });
-      loopMarker5 = new google.maps.Marker({
-        map: map,
-        position: myLatLng,
-        title: 'Hello World!'
-      });
-      loopMarker6 = new google.maps.Marker({
-        map: map,
-        position: myLatLng,
-        title: 'Hello World!'
-      });
-      loopMarker7 = new google.maps.Marker({
-        map: map,
-        position: myLatLng,
-        title: 'Hello World!'
-      });
-      loopMarker8 = new google.maps.Marker({
-        map: map,
-        position: myLatLng,
-        title: 'Hello World!'
-      });
-      //listOfLoopBusMarkers[i] = marker;
-    //}
-    // Create a map object and specify the DOM element for display.
-    map = new google.maps.Map(document.getElementById('map'), {
-      center: myLatLng,
-      scrollwheel: false,
-      zoom: 16
-    });
-
-    /*for (i = 0; i < loopBusCount.length; i++) {
-      listOfLoopBusMarkers[i].setMap(map);
-      alert(listOfLoopBusMarkers[i].title);
-    }*/
-    loopMarker1.setMap(map);
-    loopMarker2.setMap(map);
-    loopMarker3.setMap(map);
-    loopMarker4.setMap(map);
-    loopMarker5.setMap(map);
-    loopMarker6.setMap(map);
-    loopMarker7.setMap(map);
-    loopMarker8.setMap(map);
-
-  // http://stackoverflow.com/questions/30938021/continuously-updating-google-maps-with-user-location
-  // call the function initally
-
-  setTimeout( updatePosition, delay );
-
+    countLoop();
 }
 
     </script>
-    <script async defer
-      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB1ucO9jQXDgG9YoVeehqD9qmgTTyL2nt4&callback=initMap">
-    </script>
+
   </body>
 </html>
