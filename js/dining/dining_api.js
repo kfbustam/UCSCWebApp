@@ -1,4 +1,4 @@
-function newDiningListApi() {
+function newDiningApi() {
   function getDiningList() {
       /*
       dining_list = $.ajax({
@@ -32,7 +32,7 @@ function newDiningListApi() {
           console.log('GET failed.');
       }
       */
-      dining_list = '[{"breakfast":[{"name":"eggs","attribs":["milk"]}],"lunch":[{"name":"burger","attribs":["soy"]}],"dinner":[{"name":"steak","attribs":["fish"]}]}]';
+      dining_list = '{"breakfast":[{"name":"eggs","attribs":["milk"]},{"name":"orange juice","attribs":["vegan"]}],"lunch":[{"name":"burger","attribs":["soy"]},{"name":"orange juice","attribs":["vegan"]}],"dinner":[{"name":"steak","attribs":["fish"]},{"name":"orange juice","attribs":["vegan"]}]}';
       return dining_list;
   //});
   }
