@@ -6,34 +6,24 @@
  * Creates a new DiningPost model.
  * Takes an event API gateway as a parameter to post event data.
  */
-function newDiningModel(diningApi) {
-  
-  function getList() {
-    var json = diningApi.getDiningList();
-    var json_array = JSON.parse(json);
-    var dining_list = [];
+function newDiningHallModel(diningApi) {
     
-    for (i=0;i<json_array.length;i++) {
-        var name = json_array[i];
-        dining_list[i] = name;
+  var foodList = constructor();
+  
+  function constructor() {
+    var json = diningApi.getDiningHall();
+    var jsonObj = JSON.parse(json);
+    var array = getMeal(jsonObj);
+    var list = [];
+
+    for (i=0;i<array.length;i++) {
+      list[i] = Food(array[i].name, array[i].attribs);
     }
-    return dining_list;
+    return list;
   }
   
   function getDiningHall() {
-    var json = diningApi.getDiningHall();
-    var json_obj = JSON.parse(json);
-    
-    var array = getMeal(json_obj);
-
-    var meal = [];
-    for (i=0;i<array.length;i++) {
-      var name = array[i].name;
-      var attr = array[i].attribs;
-      meal[i] = Food(name, attr);
-    }
-    
-    return meal;
+    return foodList;
   }
 
   function getTime() {
@@ -73,7 +63,6 @@ function newDiningModel(diningApi) {
 
   return {
       getTod: getTod,
-      getList: getList,
       getDiningHall: getDiningHall,
     };
 }
