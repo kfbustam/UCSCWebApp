@@ -19,6 +19,12 @@ var loopBusCount = 0;
 var loopBusCountInitial = 0;
 var listOfLoopBusMarkers = [];
 
+function setMapOnAll(map) {
+  for (var i = 0; i < listOfLoopBusMarkers.length; i++) {
+    listOfLoopBusMarkers[i].setMap(map);
+  }
+}
+
   // http://stackoverflow.com/questions/30938021/continuously-updating-google-maps-with-user-location
   // call the function initally
 function updatePosition(map, myLatLng) {
@@ -62,6 +68,7 @@ function updatePosition(map, myLatLng) {
         }
         //else if the number of loop buses decrease clear the markers and reload the amount of loop bus markers
         else if(loopBusCount < loopBusCountInitial){
+          setMapOnAll(null);
           listOfLoopBusMarkers = []
           setTimeout( updatePosition(map, myLatLng), delay );
         }
