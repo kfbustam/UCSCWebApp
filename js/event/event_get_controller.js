@@ -11,10 +11,16 @@ function newEventGetController(model, view) {
       var ul = document.getElementById("event_list");
       for (i=0;i<events.length;i++) {
         var li = document.createElement("li");
+        var li_ul = document.createElement("ul");
+        var li_ul_li = document.createElement("li");
         var br = document.createElement("br");
+        li.setAttribute("id", "event-name");
         li.appendChild(document.createTextNode(events[i].getName() + "\n"));
+        li_ul_li.setAttribute("id", "event-detail");
+        li_ul_li.appendChild(document.createTextNode(events[i].getDescription()));
+        li_ul.appendChild(li_ul_li);
+        li.appendChild(li_ul);
         li.appendChild(br);
-        li.appendChild(document.createTextNode(events[i].getDescription()));
         ul.appendChild(li);
       }
     });
