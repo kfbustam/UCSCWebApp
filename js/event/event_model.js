@@ -4,21 +4,33 @@
  */
 function newEventModel(eventApi) {
   
-  function get() {
+  var events = constructor();
+  
+  /**
+   * Event Constructor
+   */
+  function constructor() {
     var json = eventApi.getEvents();
     var json_array = JSON.parse(json);
-    var events = [];
+    var list = [];
     
     for (i=0;i<json_array.length;i++) {
-        var name = json_array[i].name;
-        var description = json_array[i].description;
-        events[i] = Event(name, description);
+      var name = json_array[i].name;
+      var description = json_array[i].description;
+      list[i] = Event(name, description);
     }
+    return list;
+  }
+    
+  /**
+   * Get event array
+   */
+  function get() {
     return events;
   }
   
   /**
-   * Persist the event to the API
+   * Persist an event to the API
    */
   function upload(name, description) {
     eventApi.postEvent({
