@@ -40,7 +40,7 @@ function newEventGetView(postElem) {
     if(handlers.loadevents) {
       handlers.loadevents();  
     }
-  }
+  };
 
   return {
     bind: bind
