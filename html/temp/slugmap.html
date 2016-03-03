@@ -10,13 +10,11 @@
     </script>
     <style type="text/css">
       html, body { margin: 0; height: 100%; overflow: hidden }
-      #map { height: 30%; }
+      #map { height: 100%; }
     </style>
 
-    <link href="css/navbar-fixed-top.css" rel="stylesheet">
     <link rel="icon" href="../bootstrap-3.3.6/bootstrap-3.3.6/docs/favicon.ico">
-
-    <title>Event List</title>
+  <link href="css/style.css" rel="stylesheet">
 
   <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
     
@@ -26,7 +24,7 @@
   <!-- Optional theme -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
     <!-- Fixed navbar -->
-    <nav class="navbar navbar-default navbar-fixed-top">
+    <nav class="navbar navbar-custom navbar-fixed-top">
       <div class="container">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
@@ -35,7 +33,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="index.html">SlugApp</a>
+          <a class="navbar-brand" href="index.html"><img src="css/icon2.png" height="50" hspace="5"></a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
@@ -50,20 +48,10 @@
               </ul>
             </li>
             
-            <!-- dining dropdown-->
-            <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dining<span class="caret"></span></a>
-              <ul class="dropdown-menu">
-                <li><a href="#">Cowell/Stevenson</a></li>
-                <li><a href="#">Crown/Merrill</a></li>
-                <li><a href="#">Porter/Kresge</a></li>
-                <li><a href="#">College Eight/Oakes</a></li>
-                <li><a href="#">College 9/10</a></li>
-              </ul>
-            </li>
+            <!-- Dining -->
+            <li><a href="dining.html">Dining</a></li>
             
-            <!-- SlugBus-->
-            <li class="active"><a href="slugmap.html">SlugBus</a></li>
+            <li class="active"><a href="slugmap.html">SlugMap</a></li>
             
             
           </ul>
@@ -76,78 +64,78 @@
     <div id="map"></div>
     <script type="text/javascript">
 
-var delay = 2000; // 2 second delay
-var loopBusCount = 0;
-var loopBusCountInitial = 0;
-var listOfLoopBusMarkers = [];
+      var delay = 2000; // 2 second delay
+      var loopBusCount = 0;
+      var loopBusCountInitial = 0;
+      var listOfLoopBusMarkers = [];
 
-function setMapOnAll(map) {
-  for (var i = 0; i < listOfLoopBusMarkers.length; i++) {
-    listOfLoopBusMarkers[i].setMap(map);
-  }
-}
+      function setMapOnAll(map) {
+        for (var i = 0; i < listOfLoopBusMarkers.length; i++) {
+          listOfLoopBusMarkers[i].setMap(map);
+        }
+      }
 
-  // http://stackoverflow.com/questions/30938021/continuously-updating-google-maps-with-user-location
-  // call the function initally
-function updatePosition(map, myLatLng) {
-    $.ajax({
-        url: "http://bts.ucsc.edu:8081/location/get",
-        dataType: 'json'
-    })
-    .done(function callDone(data) {
-        // update marker position
-        for (var i = 0; i < data.length; i++) { 
-          loopBusCount = loopBusCount +1;
-        }
+        // http://stackoverflow.com/questions/30938021/continuously-updating-google-maps-with-user-location
+        // call the function initally
+      function updatePosition(map, myLatLng) {
+          $.ajax({
+              url: "http://bts.ucsc.edu:8081/location/get",
+              dataType: 'json'
+          })
+          .done(function callDone(data) {
+              // update marker position
+              for (var i = 0; i < data.length; i++) { 
+                loopBusCount = loopBusCount +1;
+              }
 
-        //set the intial markers if the list of markers is empty
-        if(listOfLoopBusMarkers.length == 0){
-          for (var i = 0; i < loopBusCount; i++) {
-            var loopMarker = new google.maps.Marker({
-              map: map,
-              position: myLatLng,
-              title: 'Hello World!'
-            });
-            listOfLoopBusMarkers[i] = loopMarker;
-            listOfLoopBusMarkers[i].setMap(map);
-          }
-          loopBusCountInitial = loopBusCount;
-        }
+              //set the intial markers if the list of markers is empty
+              if(listOfLoopBusMarkers.length == 0){
+                for (var i = 0; i < loopBusCount; i++) {
+                  var loopMarker = new google.maps.Marker({
+                    map: map,
+                    position: myLatLng,
+                    title: 'Hello World!'
+                  });
+                  listOfLoopBusMarkers[i] = loopMarker;
+                  listOfLoopBusMarkers[i].setMap(map);
+                }
+                loopBusCountInitial = loopBusCount;
+              }
 
-        //if the number of loop buses increase then add on markers
-        if(loopBusCount > loopBusCountInitial){
-          var numOfNewLoopBusCount = loopBusCount - loopBusCountInitial;
-          for(var i=0;i<numOfNewLoopBusCount;i++){
-            var loopMarker = new google.maps.Marker({
-              map: map,
-              position: myLatLng,
-              title: 'Hello World!'
-            });
-            listOfLoopBusMarkers.push(loopMarker);
-            listOfLoopBusMarkers[listOfLoopBusMarkers.length-1].setMap(map);            
-          }
-          loopBusCountInitial = loopBusCount
-        }
-        //else if the number of loop buses decrease clear the markers and reload the amount of loop bus markers
-        else if(loopBusCount < loopBusCountInitial){
-          setMapOnAll(null);
-          listOfLoopBusMarkers = []
-          setTimeout( updatePosition(map, myLatLng), delay );
-        }
-        // if the same number of loop buses are recieved from the previous state then don't add or delete markers
-        else{
-        }
+              //if the number of loop buses increase then add on markers
+              if(loopBusCount > loopBusCountInitial){
+                var numOfNewLoopBusCount = loopBusCount - loopBusCountInitial;
+                for(var i=0;i<numOfNewLoopBusCount;i++){
+                  var loopMarker = new google.maps.Marker({
+                    map: map,
+                    position: myLatLng,
+                    title: 'Hello World!'
+                  });
+                  listOfLoopBusMarkers.push(loopMarker);
+                  listOfLoopBusMarkers[listOfLoopBusMarkers.length-1].setMap(map);            
+                }
+                loopBusCountInitial = loopBusCount
+              }
+              //else if the number of loop buses decrease clear the markers and reload the amount of loop bus markers
+              else if(loopBusCount < loopBusCountInitial){
+                setMapOnAll(null);
+                listOfLoopBusMarkers = []
+                setTimeout( updatePosition(map, myLatLng), delay );
+              }
+              // if the same number of loop buses are recieved from the previous state then don't add or delete markers
+              else{
+              }
 
-        // update marker position
-        for (var i = 0; i < data.length; i++) { 
-          var latLng = new google.maps.LatLng( data[i].lat, data[i].lon );
-          listOfLoopBusMarkers[i].setPosition( latLng );
-        }
+              // update marker position
+              for (var i = 0; i < data.length; i++) { 
+                var latLng = new google.maps.LatLng( data[i].lat, data[i].lon );
+                listOfLoopBusMarkers[i].setPosition( latLng );
+              }
 
-        // call the function again
-        setTimeout( updatePosition(map, myLatLng), delay );
-    });
-}
+              // call the function again
+              setTimeout( updatePosition(map, myLatLng), delay );
+          });
+      }
 
 
 function initMap() {
