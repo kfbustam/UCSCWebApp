@@ -6,7 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="author" content="@toddmotto">
 	<link href="css/style.css" rel="stylesheet">
+	<!--
     <link rel="icon" href="../bootstrap-3.3.6/bootstrap-3.3.6/docs/favicon.ico">
+	-->
 
     <title>Event Submission Form</title>
 
@@ -18,6 +20,13 @@
 	<!-- Optional theme -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
 
+	<!-- jQuery and javascript -->
+	<script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
+    <script src="../../js/event/event_post_controller.js"></script>
+    <script src="../../js/event/event_post_view.js"></script>
+    <script src="../../js/event/event_model.js"></script>
+    <script src="../../js/event/event_api.js"></script>
+	<script src="../../js/event/event_post_main.js"></script>
 
   </head>
 
@@ -64,7 +73,7 @@
 		<div id="main" style="padding:70px 40% 0 5%;">
 		
 		<!-- Form -->
-		<form id="contact-form" action="/" method="post">
+		<form id="contact-form" method="post">
 			<h3>Get in touch</h3>
                         <br>
 			<h4>Fill in the form below to post an Event.</h4>
@@ -77,11 +86,11 @@
 			<div>
 				<label>
 					<span>Event Info: (required)</span></div>
-					<textarea id="summary" placeholder="Include all the details you can: Event name, date, location, time, etc..." tabindex="5" required></textarea>
+					<textarea id="description" placeholder="Include all the details you can: Event name, date, location, time, etc..." tabindex="5" required></textarea>
 				</label>
 		
 			<div>
-				<button name="submit" type="submit" id="contact-submit">Post Event</button>
+				<button type="submit" id="save">Post Event</button>
 			</div>
 		</form>
 		<!-- /Form -->
@@ -89,13 +98,17 @@
 		</div>
 	</div>
 
-
-
+	<!--
+	<script src="../../js/event/event_post_main.js"></script>
+	-->
+	<script>
+    main();
+    </script>
 
    
     <!-- Latest compiled and minified JavaScript -->
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
-    <script src="js/scripts.js"></script> 
+    
   </body>
 </html>
