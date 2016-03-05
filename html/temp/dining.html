@@ -1,11 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
+<html>
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="author" content="@toddmotto">
-	<link href="css/style.css" rel="stylesheet">
+	<link href="css/dining.css" rel="stylesheet">
     <link rel="icon" href="../bootstrap-3.3.6/bootstrap-3.3.6/docs/favicon.ico">
 
     <title>SlugApp Dining</title>
@@ -17,13 +16,20 @@
 
 	<!-- Optional theme -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
-
-
+    
+    <script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
+    <script src="../../js/dining/dining_list_controller.js"></script>
+    <script src="../../js/dining/dining_list_model.js"></script>
+    <script src="../../js/dining/dining_hall_model.js"></script>
+    <script src="../../js/dining/dining_list_view.js"></script>
+    <script src="../../js/dining/dining_list_api.js"></script>
+    <script src="../../js/dining/dining_hall_api.js"></script>
+    
+    
 
   </head>
-
   <body>
-
+  
     <!-- Fixed navbar -->
     <nav class="navbar navbar-custom navbar-fixed-top">
       <div class="container">
@@ -59,64 +65,63 @@
         </div><!--/.nav-collapse -->
       </div>
     </nav>
+    
+    <div class='container1'>
+    <div id="first">
+        <!-- attribute legend-->
+       
+        <h1c><b><center>ATTRIBUTE LEGEND</center></b></h1c><br>
+        <h1b>
+        <img src="css/attributes/eggs.png"> Contains Egg/s<br>
+        <img src="css/attributes/fish.png"> Contains Fish and/or Shellfish<br>
+        <img src="css/attributes/glutenf.png"> Gluten Free<br>
+        <img src="css/attributes/dairy.png"> Contains Dairy<br>
+        <img src="css/attributes/nuts.png"> Contains Peanuts and/or Tree Nuts<br>
+        <img src="css/attributes/soy.png"> Contains Soy<br>
+        <img src="css/attributes/vegetarian.png"> Vegetarian<br>
+        <img src="css/attributes/vegan.png"> Vegan<br>
+        <img src="css/attributes/pork.png"> Contains Pork<br>
+        <img src="css/attributes/beef.png"> Contains Beef
+        </h1b>
 
-    <br>
-    <h1a>Choose A Dining Hall</h1a>
-    
-    <br>
-    
-    <!-- Cowell/Stevenson button -->
-    <div class="demo-2 effect">
-        <li>
-            <h2 class="zero">Cowell/Stevenson</h2>
-            <p class="zero">Featuring the international flavors of a Mongolian-style grill, freshly prepared sushi, and delicious fire-baked pizzas, this dining hall has comfy sofa seating and an outdoor patio overlooking the Monterey Bay.</p>
-        </li>
-        <li><a href="#"><img class="top" src="css/cowell.png" alt=""/></a></li>
     </div>
-    
-       <!-- Crown/Merrill button -->
-    <div class="demo-2 effect">
-        <li>
-            <h2 class="zero">Crown/Merrill</h2>
-            <p class="zero">A lively venue offering organic salad bar, daily speciality bar and our new gluten free station. This bright, colorful dining hall is buzzing with activity throughout the day. The Happy Hour menu each afternoon offers students additional snacks and meals. Students make it a point to meet at Crown/Merrill when they are “up on the hill”.</p>
-        </li>
-        <li><a href="#"><img class="top" src="css/crown.png" alt=""/></a></li>
+    <div id="second">
+        <!-- Dining Hall Options-->
+        <h1a>Dining Halls</h1a>
+        <center><h1b><br>(Click one!)<br></h1b></center>
+        <h1c><ul class="list-unstyled" id="dining_list"></ul></h1c>
     </div>
-    
-    <!-- Porter/Kresge button -->
-    <div class="demo-2 effect">
-        <li>
-            <h2 class="zero">Porter/Kresge</h2>
-            <p class="zero">Located on the west side of campus, the Porter/Kresge Dining Hall has been redesigned and expanded. The servery offers chef-customized traditional style entrees, signature salads, and pizzas.</p>
-        </li>
-        <li><a href="#"><img class="top" src="css/porter.png" alt=""/></a></li>
+    <div id="clear"></div>
     </div>
-    
-    
-    <!-- C8/oakes button -->
-    <div class="demo-2 effect";>
-        <li>
-            <h2 class="zero">College Eight/Oakes</h2>
-            <p class="zero">With an incredible view of the bay and hillsides of Santa Cruz, this place is as inviting as it gets. This is the home of our campus bakeshop, which produces our entire array of cookies, breads, brownies, and more. If you are looking for late night dining options on the west side of campus, College Eight/Oakes has what you’re craving.</p>
-        </li>
-        <li><a href="#"><img class="top" src="css/c8oakes.png" alt=""/></a></li>
+    	
+    <div class='container1'>
+    <div id="hours">
+        <!-- Dining Hall Hours for B/L/D-->
+        <h1c><b>Hours</b></h1c><br>
+        <center><h1b>Below are the hours in which breakfast, lunch, or dinner will be shown when clicking a dining hall name.</h1b><br>
+        <h1e>Breakfast:<br>
+        <i>12AM-11:59AM</i><br>
+        <h1e>Lunch:<br>
+        <i>12PM-4:49PM</i><br>
+        <h1e>Dinner:<br>
+        <i>5PM-11:59PM</i></h1e></center>
     </div>
-    
-    <!-- C9/10 button -->
-    <div class="demo-2 effect">
-        <li>
-            <h2 class="zero">College Nine/Ten</h2>
-            <p class="zero">This exhibition-style food court, showcasing the latest dining trends, encourages students to roam from station to station making selections. Widely recognized by students, faculty and staff for its vegan entrée options, this dining commons also has an adjacent multi-purpose room which offers additional seating and community events.</p>
-        </li>
-        <li><a href="#"><img class="top" src="css/c910.png" alt=""/></a></li>
+    <div id="menu">
+        <!-- Current Dining Menu for time of day-->
+        <h1d><center><img src="css/minislug.png" height=50px>   M E N U   <img src="css/minislugmirror.png" height=50px></center></h1d><br>
+        <center><h1e><ul class="list-unstyled" id="dining_hall"></ul></h1e></center>
     </div>
-    
+    <div id="clear"></div>
+    </div>
 
 
-	   
+
     <!-- Latest compiled and minified JavaScript -->
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
-    <script src="js/scripts.js"></script> 
-  </body>
+  <body>
+  <script src="../../js/dining/dining_main.js"></script>
+  <script>
+    main();
+  </script>
 </html>

@@ -41,53 +41,22 @@ body {
 }
 
 #container1 {
-	padding-top: 75px;
-    width: 70%;
-    background-color: #ffcc33;
-
-
-}
-#first {
-    width: 15%;
-	height: 50%;
+	height: 25%;
+	width: 100%;
+	position: fixed;
+	bottom: 0px;
+    border: 5px solid #34538a;
     float: left;
-    background-color: white;
-	padding-top: 75px;
+}
+#box {
+	width: 25%;
+	height: 100%;
+    background: #c1e1ff;
+    vertical-align: bottom;
+    display: inline-block;
 	overflow: auto;
 }
 
-
-#second {
-    width: 45%;
-	height: 50%;
-    float: left;
-    background-color: #c1e1ff;
-	padding-top: 75px;
-	overflow: auto;
-	border-bottom: thick dotted #34538a;
-}
-
-#hours {
-    width: 15%;
-    float: left;
-    background-color: #c1e1ff;
-	border-radius: 25px;
-	padding-top: 50px;
-	overflow: visible;
-}
-
-#menu {
-    width: 45%;
-	height: 50%;
-    float: left;
-    background-color: white;
-	padding-top: 50px;
-	overflow: visible;
-}
-
-#clear {
-    clear: both;
-}
 
 
 h1a {
