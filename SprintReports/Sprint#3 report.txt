@@ -1,0 +1,21 @@
+Sprint #3 Report
+SlugApp
+Team SlugApp
+03/07/16
+
+
+
+work completed:
+	- As users, we want to be able to navigate through the features with ease.
+	- As developers, we want to serve relevant data to users.
+	- As developers, we want to be able to persistently store data.
+	- As developers, we want to be able to show where the loop buses are located
+
+work not completed:
+	- As users, we want to be able to be able to view a list of events WITH FILTERS. Filters not yet done, but can view list.
+	
+work completion rate:
+	- Total # of user stories completed during this sprint: 3 out of 4
+	- Total # of ideal work hours completed during this sprint: 65 hours
+	- Total # of days during this sprint: 15 days
+	- Approximately .25 user stories done per day, 4.3 hours worked per day
