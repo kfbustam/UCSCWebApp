@@ -1,7 +1,5 @@
 function main() {
-  var eventModel = newEventModel(newEventTestApi());
-  var eventView = newEventGetView(
-      document.getElementById("post_event")
-    );
+  var eventModel = newEventModel(newEventApi());
+  var eventView = newEventGetView();
   newEventGetController(eventModel, eventView);
 }

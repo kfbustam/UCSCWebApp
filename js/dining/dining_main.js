@@ -1,6 +1,6 @@
 function main() {
-  var diningHallModel = newDiningHallModel(newDiningHallApi());
-  var diningListModel = newDiningListModel(newDiningListApi());
+  var diningListModel = newDiningListModel(newDiningApi());
   var diningListView = newDiningListView();
+  var diningHallModel = newDiningHallModel(newDiningApi());
   newDiningListController(diningListModel, diningHallModel, diningListView);
 }

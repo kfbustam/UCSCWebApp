@@ -1,31 +1,31 @@
 // onclick
 // getactive(str)
 // setactive(str)
-
 /**
  * Creates a new DiningPost model.
  * Takes an event API gateway as a parameter to post event data.
  */
 function newDiningListModel(diningApi) {
-    
-  var diningList = constructor();
-  
-  function constructor() {
-    var json = diningApi.getDiningList();
-    var jsonArray = JSON.parse(json);
-    var list = [];
-    
-    for (i=0;i<jsonArray.length;i++) {
-        list[i] = jsonArray[i];
-    }
-    return list;
-  }
-  
-  function getDiningList() {
-    return diningList;
-  }
 
-  return {
-      getDiningList: getDiningList,
+    var diningList = [];
+
+    function init(data) {
+        for (i = 0; i < data.length; i++) {
+            diningList[i] = data[i];
+        }
+    }
+
+    function apiCall(handlers) {
+        diningApi.getDiningList(handlers);
+    }
+
+    function getDiningList() {
+        return diningList;
+    }
+
+    return {
+        init: init,
+        apiCall: apiCall,
+        getDiningList: getDiningList,
     };
 }

@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+  <head>
+        <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script async defer
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB1ucO9jQXDgG9YoVeehqD9qmgTTyL2nt4&callback=initMap">
+    </script>
+    <style type="text/css">
+      html, body { margin: 0; height: 100%; overflow: hidden }
+      #map { height: 100%; }
+    </style>
+
+    <link rel="icon" href="../bootstrap-3.3.6/bootstrap-3.3.6/docs/favicon.ico">
+  <link href="css/style.css" rel="stylesheet">
+
+  <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+    
+    <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+  <!-- Optional theme -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+    <!-- Fixed navbar -->
+    <nav class="navbar navbar-custom navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="index.html"><img src="css/icon2.png" height="50" hspace="5"></a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li><a href="index.html">Home</a></li>
+            
+            <!-- events-->
+            <li><a href="submit_event.html">Events</a></li>
+            
+            <!-- Dining -->
+            <li><a href="dining.html">Dining</a></li>
+            
+            <li class="active"><a href="slugmap.html">SlugMap</a></li>
+            
+            
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+
+  </head>
+  <body>
+    <div id="map"></div>
+    <script type="text/javascript">
+
+      var delay = 2000; // 2 second delay
+      var loopBusCount = 0;
+      var loopBusCountInitial = 0;
+      var listOfLoopBusMarkers = [];
+
+      function setMapOnAll(map) {
+        for (var i = 0; i < listOfLoopBusMarkers.length; i++) {
+          listOfLoopBusMarkers[i].setMap(map);
+        }
+      }
+
+        // http://stackoverflow.com/questions/30938021/continuously-updating-google-maps-with-user-location
+        // call the function initally
+      function updatePosition(map, myLatLng) {
+          $.ajax({
+              url: "http://bts.ucsc.edu:8081/location/get",
+              dataType: 'json'
+          })
+          .done(function callDone(data) {
+              // update marker position
+              for (var i = 0; i < data.length; i++) { 
+                loopBusCount = loopBusCount +1;
+              }
+
+              //set the intial markers if the list of markers is empty
+              if(listOfLoopBusMarkers.length == 0){
+                for (var i = 0; i < loopBusCount; i++) {
+                  var image = 'css/loop_bus.png';
+                  var loopMarker = new google.maps.Marker({
+                    map: map,
+                    position: myLatLng,
+                    title: 'Hello World!',
+                    icon: image
+                  });
+                  listOfLoopBusMarkers[i] = loopMarker;
+                  listOfLoopBusMarkers[i].setMap(map);
+                }
+                loopBusCountInitial = loopBusCount;
+              }
+
+              //if the number of loop buses increase then add on markers
+              if(loopBusCount > loopBusCountInitial){
+                var numOfNewLoopBusCount = loopBusCount - loopBusCountInitial;
+                for(var i=0;i<numOfNewLoopBusCount;i++){
+                  var image = 'css/loop_bus.png';
+                  var loopMarker = new google.maps.Marker({
+                    map: map,
+                    position: myLatLng,
+                    title: 'Hello World!',
+                    icon: image
+                  });
+                  listOfLoopBusMarkers.push(loopMarker);
+                  listOfLoopBusMarkers[listOfLoopBusMarkers.length-1].setMap(map);            
+                }
+                loopBusCountInitial = loopBusCount
+              }
+              //else if the number of loop buses decrease clear the markers and reload the amount of loop bus markers
+              else if(loopBusCount < loopBusCountInitial){
+                setMapOnAll(null);
+                listOfLoopBusMarkers = []
+                setTimeout( updatePosition(map, myLatLng), delay );
+              }
+              // if the same number of loop buses are recieved from the previous state then don't add or delete markers
+              else{
+              }
+
+              // update marker position
+              for (var i = 0; i < data.length; i++) { 
+                var latLng = new google.maps.LatLng( data[i].lat, data[i].lon );
+                listOfLoopBusMarkers[i].setPosition( latLng );
+              }
+
+              // call the function again
+              setTimeout( updatePosition(map, myLatLng), delay );
+          });
+      }
+
+
+function initMap() {
+  // Create a map object and specify the DOM element for display.
+  var myLatLng = {lat: 0, lng: 0};
+  var map = new google.maps.Map(document.getElementById('map'), {
+              center: {lat: 37.0000, lng: -122.0600},
+              scrollwheel: false,
+              zoom: 16
+
+            });
+  updatePosition(map, myLatLng);
+}
+
+    </script>
+
+  </body>
+</html>

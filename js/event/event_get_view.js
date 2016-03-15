@@ -1,25 +1,19 @@
-function newEventGetView(postElem) {
-  // Map between callbacks and their handlers
-  var handlers = {};
+function newEventGetView() {
+    // Map between callbacks and their handlers
+    var handlers = {};
 
-  function bind(callback, fn) {
-    handlers[callback] = fn;
-  }
-
-  postElem.onclick = function() {
-    if(handlers.redirect) {
-      handlers.redirect();
+    function bind(callback, fn) {
+        handlers[callback] = fn;
     }
-  };
-  
-  window.onload = function() {
-    if(handlers.loadevents) {
-      handlers.loadevents();  
-    }
-  };
 
-  return {
-    bind: bind
-  };
+    window.onload = function() {
+        alert("HELLO");
+        if (handlers.makeEventApiCall) {
+            handlers.makeEventApiCall(handlers);
+        }
+    };
+
+    return {
+        bind: bind
+    };
 }
-

@@ -1,0 +1,130 @@
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="author" content="@toddmotto">
+	<link href="css/style.css" rel="stylesheet">
+    <link rel="icon" href="../bootstrap-3.3.6/bootstrap-3.3.6/docs/favicon.ico">
+
+    <title>SlugApp Dining</title>
+    
+    	<link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+    
+    <!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+	<!-- Optional theme -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+    
+    <script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
+    <script src="js/dining/dining_list_controller.js"></script>
+    <script src="js/dining/dining_list_model.js"></script>
+    <script src="js/dining/dining_hall_model.js"></script>
+    <script src="js/dining/dining_list_view.js"></script>
+    <script src="js/dining/dining_api.js"></script>
+    
+    
+
+  </head>
+  <body>
+  
+    <!-- Fixed navbar -->
+    <nav class="navbar navbar-custom navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="index.html"><img src="css/icon2.png" height="50" hspace="5"></a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li><a href="index.html">Home</a></li>
+            
+            <!-- events dropdown-->
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Events<span class="caret"></span></a>
+              <ul class="dropdown-menu">
+              	<li><a href="event_list.html">List of Events</a></li>
+                <li><a href="submit_event.html">Submit an Event</a></li>
+              </ul>
+            </li>
+            
+            <!-- Dining -->
+            <li class="active"><a href="dining.html">Dining</a></li>
+            
+            <li><a href="slugmap.html">SlugMap</a></li>
+            
+            
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+    
+    <div class='container2'>
+    <div id="legend">
+        <!-- attribute legend-->
+       
+        <h1f><b><center>ATTRIBUTE LEGEND</center></b></h1f><br>
+        <h1e>
+        <img src="css/attributes/eggs.png"> Contains Egg/s<br>
+        <img src="css/attributes/fish.png"> Contains Fish and/or Shellfish<br>
+        <img src="css/attributes/glutenf.png"> Gluten Free<br>
+        <img src="css/attributes/dairy.png"> Contains Dairy<br>
+        <img src="css/attributes/nuts.png"> Contains Peanuts and/or Tree Nuts<br>
+        <img src="css/attributes/soy.png"> Contains Soy<br>
+        <img src="css/attributes/vegetarian.png"> Vegetarian<br>
+        <img src="css/attributes/vegan.png"> Vegan<br>
+        <img src="css/attributes/pork.png"> Contains Pork<br>
+        <img src="css/attributes/beef.png"> Contains Beef
+        </h1e>
+
+    </div>
+    <div id="halls">
+        <!-- Dining Hall Options-->
+        <h1d>Dining Halls</h1d>
+        <center><h1e><br>(Click one!)<br></h1e></center>
+        <h1f><ul class="list-unstyled" id="dining_list"></ul></h1f>
+    </div>
+    <div id="clear"></div>
+    </div>
+    	
+    <div class='container2'>
+    <div id="hours">
+        <!-- Dining Hall Hours for B/L/D-->
+        <h1f><b>Hours</b></h1f><br>
+        <center><h1e>Below are the time slots in which breakfast, lunch, or dinner menus will be served. Times may vary.</h1e><br>
+        <h1h>WEEKDAYS<br>Breakfast:<br>
+        <i>7:15AM-11AM</i><br>
+        Lunch:<br>
+        <i>12PM-2PM</i><br>
+        Dinner:<br>
+        <i>5PM-8PM</i><br>
+        <h1h>WEEKEND<br>Brunch:<br>
+        <i>10AM-2PM</i><br>
+        Dinner:<br>
+        <i>5PM-8PM</i></h1h></center>
+    </div>
+    <div id="menu">
+        <!-- Current Dining Menu for time of day-->
+        <h1g><center><img src="css/minislug.png" height=50px>   M E N U   <img src="css/minislugmirror.png" height=50px></center></h1g><br>
+        <center><h1h><ul class="list-unstyled" id="dining_hall"></ul></h1h></center>
+    </div>
+    <div id="clear"></div>
+    </div>
+
+
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+  <body>
+  <script src="js/dining/dining_main.js"></script>
+  <script>
+    main();
+  </script>
+</html>
