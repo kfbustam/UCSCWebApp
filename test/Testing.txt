@@ -1,0 +1,4 @@
+JavaScript Testing
+- Tested if Event model updates
+- Tested if Events are uploaded to server
+- Tested if Event handles multiple updates

@@ -1,40 +1,55 @@
-/*
-Title: Creating an HTML5 enhanced responsive-ready contact form, with custom javascript feature detection
-Tutorial on: http://www.onextrapixel.com
-Author: http://www.toddmotto.com
-*/
-
-* {
-	margin:0;
-	padding:0;
-	box-sizing:border-box;
-	-webkit-box-sizing:border-box;
-	-moz-box-sizing:border-box;
-	-webkit-font-smoothing:antialiased;
-	-moz-font-smoothing:antialiased;
-	-o-font-smoothing:antialiased;
-	font-smoothing:antialiased;
-	text-rendering:optimizeLegibility;
-}
 body {
 	font:400 12px/1.625 "Helvetica Neue", Helvetica, Arial, sans-serif;
-	color:#444;
-	background-image:url(logo.png), linear-gradient(left , #525250 0%, #00467f 52%, #525250 100%);
-	background-image:url(logo.png), -moz-linear-gradient(left , #525250 0%, #00467f 52%, #525250 100%);
-	background-image:url(logo.png), -webkit-linear-gradient(left , #525250 0%, #00467f 52%, #525250 100%);
+	color: 444;
+	background-image:url(logo.png), linear-gradient(left , #ffffff 0%, #ffffff 52%, #ffffff 100%);
+	background-image:url(logo.png), -moz-linear-gradient(left , #ffffff 0%, #ffffff 52%, #ebebeb 100%);
+	background-image:url(logo.png), -webkit-linear-gradient(left , #ffffff 0%, #ffffff 52%, #ffffff 100%);
 	background-repeat: no-repeat;
 	background-position: top 75px right 100px, center;
 	background-size: 30%, auto;
 	background-attachment:fixed;
 
 
-
      }
-
+	 
+.navbar-custom {
+    background-color:#34538a;
+	height: 50px;
+    color:#ffffff;
+    border-radius:0;
 }
 
+.navbar-custom .navbar-nav > li > a {
+    color:#fff;
+	font-family: CoveredByYourGrace;
+	font-size: 20px;
+}
+
+.navbar-custom .navbar-nav > .active > a, .navbar-nav > .active > a:hover, .navbar-nav > .active > a:focus {
+    color: #ffffff;
+	font-family: CoveredByYourGrace;
+    background-color:transparent;
+}
+.navbar-custom .navbar-brand {
+	padding: 0;
+    color:#eeeeee;
+}
+
+@font-face {
+    font-family: CoveredByYourGrace;
+    src: url(CoveredByYourGrace.ttf);
+}
+
+@font-face {
+    font-family: AvenirCondensedHand;
+    src: url(AvenirCondensedHand.ttf);
+}
+
+
+
+
 .wrapper {
-	max-width:500px;
+/*  max-width:1000px; not sure if we want to limit width or not..? */
 	width:95%;
 	margin:0 auto;
 	position:relative;
@@ -60,15 +75,16 @@ body {
 }
 #contact-form {
 	text-shadow:0 1px 0 #FFF;
+	border: 10px double #68a3da;
 	border-radius:4px;
 	-webkit-border-radius:4px;
 	-moz-border-radius:4px;
-	background:#F9F9F9;
+	background:#c1e1ff;
 	padding:25px;
 }
 #contact-form h3 {
 	font-family: 'Pacifico', cursive;
-	color:#d6ac1f;
+	color:#FFFFFF;
 	display:block;
 	font-size:35px;
 	text-align:center;
@@ -81,7 +97,9 @@ body {
 }
 #contact-form label span {
 	cursor:pointer;
-	color:#d6ac1f;
+	font-family: CoveredByYourGrace;
+	font-size: 20px;
+	color:#444444;
 	display:block;
 	margin:5px 0;
 	font-weight:900;
@@ -145,6 +163,90 @@ body {
 	outline:0;
 	border:1px solid #999;
 }
+
+h1a {
+	font-family: 'Pacifico', cursive;
+	color:#444;
+	display:block;
+	font-size:36px;
+	text-align:center;
+	padding-left: 15%;
+	padding-right: 30%;
+	padding-top: 70px;
+}
+
+h1b {
+	font-family: CoveredByYourGrace;
+	color:#444;
+    display: block;
+ 
+	font-size:15px;
+	padding-left: 15px;
+	padding-right: 30%;
+	padding-top: 70px;
+	
+}
+
+
+.demo-2 {
+    position:relative;
+    width:300px;
+    height:200px;
+	border: 10px double #68a3da;
+    overflow:hidden;
+    float:left;
+	margin-left: 20px;
+    margin-right:20px;
+    background-color:#CCC;
+}
+.demo-2 p,.demo-2 h2 {
+    color:#fff;
+    padding:10px;
+    top:20px;
+    position:relative
+	
+}
+.demo-2 p {
+    font-family:AvenirCondensedHand;
+    font-size:12px;
+    line-height:18px;
+    margin:0
+}
+.demo-2 h2 {
+    font-size:25px;
+    line-height:24px;
+    margin:0;
+    font-family: CoveredByYourGrace;
+	text-align: center;
+	
+	}
+	
+.effect img {
+    position:absolute;
+    left:0;
+    bottom:0;
+    cursor:pointer;
+    margin:0 0;
+    -webkit-transition:bottom .3s ease-in-out;
+    -moz-transition:bottom .3s ease-in-out;
+    -o-transition:bottom .3s ease-in-out;
+    transition:bottom .3s ease-in-out
+}
+.effect img.top:hover {
+    bottom:-196px;
+    padding-top:100px
+}
+
+.effect img.top:active {
+    bottom:-196px;
+    padding-top:100px
+}
+
+h2.zero,p.zero {
+    margin:0;
+    padding:0
+}
+
 ::-webkit-input-placeholder {
     color:#888;
 }
@@ -156,4 +258,3 @@ body {
 }
 :-ms-input-placeholder {
     color:#888;
-}
