@@ -1,0 +1,274 @@
+body {
+	font:400 12px/1.625 "Helvetica Neue", Helvetica, Arial, sans-serif;
+	color: 444;
+	background-image:url(logo.png), linear-gradient(left , #ffffff 0%, #ffffff 52%, #ffffff 100%);
+	background-image:url(logo.png), -moz-linear-gradient(left , #ffffff 0%, #ffffff 52%, #ebebeb 100%);
+	background-image:url(logo.png), -webkit-linear-gradient(left , #ffffff 0%, #ffffff 52%, #ffffff 100%);
+	background-repeat: no-repeat;
+	background-position: top 75px right 100px, center;
+	background-size: 30%, auto;
+	background-attachment:fixed;
+
+
+     }
+	 
+.navbar-custom {
+    background-color:#34538a;
+	height: 50px;
+    color:#ffffff;
+    border-radius:0;
+}
+
+.navbar-custom .navbar-nav > li > a {
+    color:#fff;
+	font-family: CoveredByYourGrace;
+	font-size: 20px;
+}
+
+.navbar-custom .navbar-nav > .active > a, .navbar-nav > .active > a:hover, .navbar-nav > .active > a:focus {
+    color: #ffffff;
+	font-family: CoveredByYourGrace;
+    background-color:transparent;
+}
+.navbar-custom .navbar-brand {
+	padding: 0;
+    color:#eeeeee;
+}
+
+@font-face {
+    font-family: CoveredByYourGrace;
+    src: url(CoveredByYourGrace.ttf);
+}
+
+
+<!-- dining css -->
+#container2 {
+	padding-top: 75px;
+    width: 70%;
+    background-color: #ffcc33;
+
+
+}
+#legend {
+    width: 15%;
+	height: 50%;
+    float: left;
+    background-color: white;
+	padding-top: 75px;
+	overflow: auto;
+}
+
+
+#halls {
+    width: 45%;
+	height: 50%;
+    float: left;
+    background-color: #c1e1ff;
+	padding-top: 75px;
+	overflow: auto;
+	border-bottom: thick dotted #34538a;
+}
+
+#hours {
+    width: 15%;
+    float: left;
+    background-color: #c1e1ff;
+	border-radius: 25px;
+	padding-top: 50px;
+	overflow: visible;
+}
+
+#menu {
+    width: 45%;
+	height: 50%;
+    float: left;
+    background-color: white;
+	padding-top: 50px;
+	overflow: visible;
+}
+
+#clear {
+    clear: both;
+}
+
+
+h1d {
+	font-family: 'Pacifico', cursive;
+	color:#444;
+	display:block;
+	font-size:36px;
+	text-align:center;
+
+}
+
+h1e {
+	font-family: CoveredByYourGrace;
+	color:#444;
+    display: block;
+	font-size:15px;
+	line-height: 15px;
+}
+
+h1f {
+	font-family: CoveredByYourGrace;
+	color:#444;
+    display: block;
+	font-size:30px;
+	text-align:center;
+	line-height: 30px;
+	cursor: pointer
+	
+}
+
+h1g {
+	font-family: CoveredByYourGrace;
+	color:#444;
+    display: block;
+	font-size:40px;
+	text-align:center;
+
+	
+}
+
+h1h {
+	font-family: CoveredByYourGrace;
+	color:#444;
+    display: block;
+	font-size:25px;
+	text-align:center;
+	
+}
+
+<!-- end of dining css -->
+
+<!-- event css -->
+
+.wrapper {
+/*  max-width:1000px; not sure if we want to limit width or not..? */
+	width:95%;
+	margin:0 auto;
+	position:relative;
+}
+
+#contact-form ul {
+	list-style-type: none;
+}
+#event-name {
+	font-weight: bold;
+}
+#event-detail {
+	font-weight: normal;
+}
+
+#contact-form input[type="text"],
+#contact-form input[type="email"],
+#contact-form input[type="tel"],
+#contact-form input[type="url"],
+#contact-form textarea,
+#contact-form button[type="submit"] {
+	font:400 12px/12px "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+#contact-form {
+	text-shadow:0 1px 0 #FFF;
+	border: 10px double #68a3da;
+	border-radius:4px;
+	-webkit-border-radius:4px;
+	-moz-border-radius:4px;
+	background:#c1e1ff;
+	padding:25px;
+}
+#contact-form h3 {
+	font-family: 'Pacifico', cursive;
+	color:#FFFFFF;
+	display:block;
+	font-size:35px;
+	text-align:center;
+}
+#contact-form h4 {
+	margin:5px 0 15px;
+	display:block;
+	font-size:13px;
+	text-align:center;
+}
+#contact-form label span {
+	cursor:pointer;
+	font-family: CoveredByYourGrace;
+	font-size: 20px;
+	color:#444444;
+	display:block;
+	margin:5px 0;
+	font-weight:900;
+	text-align:center;
+}
+#contact-form input[type="text"],
+#contact-form input[type="email"],
+#contact-form input[type="tel"],
+#contact-form input[type="url"],
+#contact-form textarea {
+	width:100%;
+	box-shadow:inset 0 1px 2px #DDD, 0 1px 0 #FFF;
+	-webkit-box-shadow:inset 0 1px 2px #DDD, 0 1px 0 #FFF;
+	-moz-box-shadow:inset 0 1px 2px #DDD, 0 1px 0 #FFF;
+	border:1px solid #CCC;
+	background:#FFF;
+	margin:0 0 5px;
+	padding:10px;
+	border-radius:5px;
+}
+#contact-form input[type="text"]:hover,
+#contact-form input[type="email"]:hover,
+#contact-form input[type="tel"]:hover,
+#contact-form input[type="url"]:hover,
+#contact-form textarea:hover {
+	-webkit-transition:border-color 0.3s ease-in-out;
+	-moz-transition:border-color 0.3s ease-in-out;
+	transition:border-color 0.3s ease-in-out;
+	border:1px solid #AAA;
+}
+#contact-form textarea {
+	height:100px;
+	max-width:100%;
+}
+#contact-form button[type="submit"] {
+	cursor:pointer;
+	width:100%;
+	border:none;
+	background:#ffc500;
+	background-image:linear-gradient(bottom, #cf9814 0%, #ffc500 52%);
+	background-image:-moz-linear-gradient(bottom, #cf9814 0%, #ffc500 52%);
+	background-image:-webkit-linear-gradient(bottom, #cf9814 0%, #ffc500 52%);
+	color:#FFF;
+	margin:0 0 5px;
+	padding:10px;
+	border-radius:5px;
+}
+#contact-form button[type="submit"]:hover {
+	background-image:linear-gradient(bottom, #525250 0%, #00467f 52%);
+	background-image:-moz-linear-gradient(bottom, #525250 0%, #00467f 52%);
+	background-image:-webkit-linear-gradient(bottom, #525250 0%, #00467f 52%);
+	-webkit-transition:background 0.3s ease-in-out;
+	-moz-transition:background 0.3s ease-in-out;
+	transition:background-color 0.3s ease-in-out;
+}
+#contact-form button[type="submit"]:active {
+	box-shadow:inset 0 1px 3px rgba(0,0,0,0.5);
+}
+#contact-form input:focus,
+#contact-form textarea:focus {
+	outline:0;
+	border:1px solid #999;
+}
+
+<!-- end of event css -->
+
+::-webkit-input-placeholder {
+    color:#888;
+}
+:-moz-placeholder {
+    color:#888;
+}
+::-moz-placeholder {
+    color:#888;
+}
+:-ms-input-placeholder {
+    color:#888;

@@ -1,4 +1,4 @@
-function newEventGetView() {
+function newDiningListView() {
     // Map between callbacks and their handlers
     var handlers = {};
 
@@ -7,8 +7,8 @@ function newEventGetView() {
     }
 
     window.onload = function() {
-        if (handlers.makeEventApiCall) {
-            handlers.makeEventApiCall(handlers);
+        if (handlers.makeDiningListApiCall) {
+            handlers.makeDiningListApiCall(handlers);
         }
     };
 

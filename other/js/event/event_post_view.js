@@ -1,4 +1,4 @@
-function newEventGetView() {
+function newEventPostView(nameElem, descElem, saveElem) {
     // Map between callbacks and their handlers
     var handlers = {};
 
@@ -6,9 +6,9 @@ function newEventGetView() {
         handlers[callback] = fn;
     }
 
-    window.onload = function() {
-        if (handlers.makeEventApiCall) {
-            handlers.makeEventApiCall(handlers);
+    saveElem.onclick = function() {
+        if (handlers.saveClick) {
+            handlers.saveClick(nameElem.value, descElem.value);
         }
     };
 
